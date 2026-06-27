@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon --watch src --watch ../../shared/ --exec ts-node -r tsconfig-paths/register src/app.ts",
     "stage": "ts-node-dev --respawn --transpile-only src/app.ts",
-    "build": "tsc",
+    "build": "tsc -p tsconfig.json",
     "start": "node dist/app.js",
     "migrate": "npx prisma migrate dev --name init",
     "test": "jest"
@@ -33,7 +33,7 @@
     "@bufbuild/protobuf": "^2.11.0",
     "@grpc/grpc-js": "^1.14.3",
     "@prisma/client": "^6.19.3",
-    "@shared/kafka": "workspace:*",
+    "@shared/kafka-manager": "workspace:*",
     "@shared/logger": "workspace:*",
     "jsonwebtoken": "^9.0.3",
     "kafkajs": "^2.2.4",
