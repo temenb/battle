@@ -2,7 +2,7 @@ import {Battle} from "@prisma/client";
 import {BattleModel} from "../models/battle.model";
 import logger from "@shared/logger";
 
-// import {enqueueEventTx} from "@shared/pg-boss-helper/src/enqueueEvent";
+// import {enqueueEventTx} from "@shared/pg-boss-manager/src/enqueueEvent";
 // import {kafkaProducersConfig} from "../config/kafka.config";
 // import {battleToGrpc} from "../lib/battle-grpc-prisma-converters";
 

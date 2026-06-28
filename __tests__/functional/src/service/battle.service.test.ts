@@ -1,10 +1,10 @@
 // import { upsertBattle } from "../../../../src/services/battle.service";
-// import {enqueueEventTx} from "@shared/pg-boss-helper/src/enqueueEvent";
+// import {enqueueEventTx} from "@shared/pg-boss-manager/src/enqueueEvent";
 // import { BattleStatus } from "@prisma/client";
 // import prisma from "../../../../src/lib/prisma";
 // import logger from "@shared/logger/dist";
 //
-// jest.mock("@shared/pg-boss-helper/src/enqueueEvent", () => ({
+// jest.mock("@shared/pg-boss-manager/src/enqueueEvent", () => ({
 //   enqueueEventTx: jest.fn(),
 // }));
 //

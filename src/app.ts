@@ -4,7 +4,7 @@ import logger from '@shared/logger';
 import kafkaConfig, {kafkaConsumersConfig, kafkaProducersConfig} from "./config/kafka.config";
 import {createConsumer} from "@shared/kafka-manager";
 // import {startBattleNewWorker} from "./lib/consumers";
-import {initBoss, startKafkaWorker} from "@shared/pg-boss-helper";
+import {initBoss, startKafkaWorker} from "@shared/pg-boss-manager";
 import pgBossConfig from "./config/pg.boss.config";
 
 const GRPC_PORT = process.env.GRPC_PORT ?? '50051';
