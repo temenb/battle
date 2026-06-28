@@ -1,7 +1,7 @@
 import logger from "@shared/logger";
 import prisma from '../lib/prisma';
 import kafkaConfig from "../config/kafka.config";
-import {createProducer} from '@shared/kafka';
+import {createProducer} from "@shared/kafka-manager";
 
 const startedAt = Date.now();
 
