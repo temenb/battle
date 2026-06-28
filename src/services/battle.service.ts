@@ -2,7 +2,7 @@ import {Battle} from "@prisma/client";
 import {BattleModel} from "../models/battle.model";
 import logger from "@shared/logger";
 
-// import {enqueueEventTx} from "@shared/pg-boss-manager/src/enqueueEvent";
+// import pgBossManager from "@shared/pg-boss-manager";
 // import {kafkaProducersConfig} from "../config/kafka.config";
 // import {battleToGrpc} from "../lib/battle-grpc-prisma-converters";
 
@@ -33,7 +33,7 @@ export async function upsertBattle(profileId: string): Promise<Battle> {
         return await BattleModel.joinBattle(existingSomebodiesBattle.id, profileId);
       } catch (e) {
         logger.log(e);
-        // await enqueueEventTx(kafkaProducersConfig.topicBattleStarted, battleToGrpc(battle), tx);
+        // await pgBossManager.enqueueEventTx(kafkaProducersConfig.topicBattleStarted, battleToGrpc(battle), tx);
 
         // export const makeMove = (move: engineGrpc.BattleMoveRequest): Promise<emptyGrpc.Empty | null> => {
         //   return engineManager.call((client, cb) => client.battleMove(move, cb));
