@@ -7,6 +7,7 @@
     "dev": "nodemon --watch src --watch ../../shared/ --exec ts-node -r tsconfig-paths/register src/app.ts",
     "stage": "ts-node-dev --respawn --transpile-only src/app.ts",
     "build": "tsc -p tsconfig.json",
+    "proto:generate": "pnpm exec protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=src/grpc/generated --ts_proto_opt=outputServices=grpc-js,useExactTypes=false,esModuleInterop=true --proto_path=../../proto/ ../../proto/*.proto ../../proto/**/*.proto",
     "start": "node dist/app.js",
     "migrate": "npx prisma migrate dev --name init",
     "test": "jest",
@@ -28,7 +29,8 @@
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths": "^4.2.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2",
+    "ts-proto": "^2.11.6"
   },
   "dependencies": {
     "@bufbuild/protobuf": "^2.11.0",
