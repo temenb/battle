@@ -7,8 +7,8 @@
     "dev": "nodemon --watch src --watch ../../shared/ --exec ts-node -r tsconfig-paths/register src/app.ts",
     "stage": "ts-node-dev --respawn --transpile-only src/app.ts",
     "build": "tsc -p tsconfig.json",
-    "proto:generate": "pnpm exec protoc --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=src/grpc/generated --ts_proto_opt=outputServices=grpc-js,useExactTypes=false,esModuleInterop=true --proto_path=../../proto/ ../../proto/*.proto ../../proto/**/*.proto",
-    "start": "node dist/app.js",
+    "proto:generate": "pnpm exec protoc --plugin=protoc-gen-ts_proto=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=src/grpc/generated --ts_proto_opt=outputServices=grpc-js,useExactTypes=false,esModuleInterop=true --proto_path=../../proto/ ../../proto/*.proto ../../proto/**/*.proto",
+    "start": "node dist/src/app.js",
     "migrate": "npx prisma migrate dev --name init",
     "test": "jest",
     "postinstall": "prisma generate --schema=./prisma/schema.prisma"
