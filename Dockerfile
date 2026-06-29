@@ -49,16 +49,9 @@ WORKDIR /usr/src/app
 
 ENV NODE_ENV=production
 
-
 #COPY --from=build /usr/src/app /usr/src/app
-
 COPY --from=build /usr/src/app/node_modules ./node_modules
-COPY --from=build /usr/src/app/package.json ./package.json
-COPY --from=build /usr/src/app/services/battle/dist ./services/battle/dist
-COPY --from=build /usr/src/app/shared/*/dist ./shared/*/dist
-COPY --from=build /usr/src/app/shared/*/package.json ./shared/*/package.json
-
-#COPY --from=build /usr/src/app/shared ./shared
+COPY --from=build /usr/src/app/dist ./dist
 
 USER node
 
