@@ -3,6 +3,8 @@ name: Build & Deploy Auth Service
 on:
   push:
     branches:
+      - dev
+      - uat
       - prod
 
 jobs:
