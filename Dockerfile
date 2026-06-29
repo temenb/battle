@@ -9,6 +9,7 @@ COPY turbo.json ./
 COPY package.json ./
 COPY pnpm-workspace.yaml ./
 COPY tsconfig.json ./
+
 COPY services/battle/package*.json ./services/battle/
 COPY services/battle/jest.config.js ./services/battle/
 COPY services/battle/tsconfig.json ./services/battle/
@@ -40,8 +41,11 @@ FROM base AS prod
 ENV NODE_ENV=production
 
 USER root
-RUN corepack enable && pnpm install --frozen-lockfile --prod && pnpm run --filter battle build
-RUN chown -R node:node /usr/src/app
+RUN corepack enable \
+ && pnpm install --frozen-lockfile \
+ && pnpm run --filter battle build \
+ && pnpm prune --prod \
+ && chown -R node:node /usr/src/app
 
 USER node
 
