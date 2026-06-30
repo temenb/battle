@@ -12,6 +12,7 @@ COPY tsconfig.json ./
 COPY proto ./proto
 
 COPY services/battle/package*.json ./services/battle/
+COPY services/battle/prisma ./services/battle/prisma
 COPY services/battle/jest.config.js ./services/battle/
 COPY services/battle/tsconfig.json ./services/battle/
 COPY services/battle/prisma ./services/battle/prisma/
