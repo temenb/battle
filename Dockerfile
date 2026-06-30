@@ -32,7 +32,7 @@ RUN pnpm run --filter battle proto:generate
 RUN pnpm --filter @shared/logger build
 RUN pnpm --filter @shared/grpc-client-manager build
 RUN pnpm --filter @shared/kafka-manager build
-RUN pnpm --filter @shared/pg-boss-manager buld
+RUN pnpm --filter @shared/pg-boss-manager build
 RUN pnpm --filter battle build
 RUN pnpm prune --prod
 
@@ -41,6 +41,12 @@ FROM build AS dev
 
 ENV NODE_ENV=development
 
+COPY --from=base /usr/local/bin/corepack /usr/local/bin/corepack
+RUN corepack enable
+RUN corepack prepare pnpm@8.6.3 --activate
+
+RUN chown -R node:node /usr/src/app
+
 USER node
 
 EXPOSE 50051
@@ -48,7 +54,7 @@ EXPOSE 50051
 CMD ["pnpm", "--filter", "battle", "start"]
 
 HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \
-  CMD curl -f http://localhost:9090/livez || exit 1
+  CMD nc -z localhost 50051 || exit 1
 
 # ---------- PROD ----------
 FROM node:22 AS prod
@@ -73,5 +79,6 @@ EXPOSE 50051
 
 CMD ["node", "./services/battle/dist/app.js"]
 
-HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-  CMD curl -f http://localhost:9090/livez || exit 1
+HEALTHCHECK --interval=10s --timeout=3s --start-period=5s --retries=3 \
+  CMD nc -z localhost 50051 || exit 1
+
