@@ -8,7 +8,7 @@ COPY pnpm-lock.yaml ./
 COPY turbo.json ./
 COPY package.json ./
 COPY pnpm-workspace.yaml ./
-COPY tsconfig.json ./
+COPY tsconfig.base.json ./
 COPY proto ./proto
 
 COPY services/battle/package*.json ./services/battle/
