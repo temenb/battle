@@ -99,5 +99,5 @@ jobs:
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.GH_PAT }}" \
             https://api.github.com/repos/temenb/game/dispatches \
-            -d "{\"event_type\":\"service-updated\",\"client_payload\":{\"service\":\"${{ github.event.repository.name }}\",\"repo\":\"${GITHUB_REPOSITORY}\",\"branch\":\"${GITHUB_REF_NAME}\",\"version\":\"${{ needs.determine-version.outputs.version }}\"}}"
+            -d "{\"event_type\":\"service-updated\",\"client_payload\":{\"service\":\"${{ github.event.repository.name }}\",\"repo\":\"${GITHUB_REPOSITORY}\",\"branch\":\"${GITHUB_REF_NAME}\",\"version\":\"${{ needs.determine-version.outputs.version }}\",\"sha\":\"${{ github.sha }}\"}}"
           
